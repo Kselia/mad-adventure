@@ -9,10 +9,12 @@ import random
 import argparse
 from config import settings
 from utils import sleep
+from test import testing
 
 # Scenes
 from scenes import SCENES_POOL
 from scenes.wake_up import wake_up_scene
+
 
 # === Parse arguments ===============================================
 
@@ -86,6 +88,4 @@ if __name__ == "__main__":
     if args.test is None:
         main()
     else:
-        for scene in SCENES_POOL:
-            if scene.__name__ in args.test:
-                scene.__call__()
+        testing(args.test)
