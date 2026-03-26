@@ -14,8 +14,6 @@ from utils import sleep
 from scenes import SCENES_POOL
 from scenes.wake_up import wake_up_scene
 
-import scenes
-
 # === Parse arguments ===============================================
 
 parser = argparse.ArgumentParser()
@@ -88,6 +86,6 @@ if __name__ == "__main__":
     if args.test is None:
         main()
     else:
-        for scn in SCENES_POOL:
-            if scn.__name__ in args.test:
-                scn.__call__()
+        for scene in SCENES_POOL:
+            if scene.__name__ in args.test:
+                scene.__call__()
