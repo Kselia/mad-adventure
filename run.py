@@ -14,11 +14,13 @@ from utils import sleep
 from scenes import SCENES_POOL
 from scenes.wake_up import wake_up_scene
 
+import scenes
 
 # === Parse arguments ===============================================
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--debug", action="store_true")
+parser.add_argument("--test", nargs='+')
 args = parser.parse_args()
 
 settings.DEBUG = args.debug
@@ -83,4 +85,9 @@ def main():
 # === Run ===========================================================
 
 if __name__ == "__main__":
-    main()
+    if args.test is None:
+        main()
+    else:
+        for scn in SCENES_POOL:
+            if scn.__name__ in args.test:
+                scn.__call__()
